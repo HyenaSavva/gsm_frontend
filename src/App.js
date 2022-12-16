@@ -1,10 +1,15 @@
 import React from "react";
-import Layout from "./pages/Layout";
+import "./styles/App.css";
+
+import Layout from "./components/Layout";
+import Main from "./components/Main/Main";
 
 function App() {
   return (
     <Layout>
-      <div className="App"></div>
+      <div className="App">
+        <Main />
+      </div>
     </Layout>
   );
 }
