@@ -1,16 +1,9 @@
 import React from "react";
-import styles from "./Main.module.css";
-// import wallpaper from "../../img/wallpaper.png";
 
-const Main = () => {
-  return (
-    <main className={styles.main}>
-      <div
-        className={styles.slider}
-        // style={{ backgroundImage: `url(${wallpaper}` }}
-      ></div>
-    </main>
-  );
+import styles from "./Main.module.css";
+
+const Main = ({ children }) => {
+  return <main className={styles.main}>{children}</main>;
 };
 
 export default Main;

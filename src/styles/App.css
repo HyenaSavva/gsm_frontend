@@ -1,4 +1,13 @@
 .App {
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: 100vh;
+
+  position: relative;
+}
+
+a {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  -webkit-user-drag: none;
 }

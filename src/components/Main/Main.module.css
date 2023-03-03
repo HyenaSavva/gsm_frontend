@@ -1,14 +1,15 @@
 .main {
-  width: 100vw;
-  height: calc(100vh - 100px);
+  width: 100%;
+  height: calc(100% - 90px);
+  z-index: -1;
 
-  background: linear-gradient(
+  /* background: linear-gradient(
       360deg,
       rgba(0, 0, 0, 0.37) 0%,
       rgba(24, 24, 24, 0.055) 100%
     ),
     #2f2f2f;
-  background-blend-mode: darken, normal;
+  background-blend-mode: darken, normal; */
 
   overflow: hidden;
 }
@@ -22,11 +23,28 @@
   /* filter: blur(2px); */
 }
 
+.wallpaper {
+  width: 100vw;
+  height: 100vw;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: -20px;
+  bottom: 0;
+
+  background-repeat: repeat-y;
+  background-size: cover;
+
+  animation: slide 60s linear infinite;
+  filter: blur(2px);
+}
+
 @keyframes slide {
   from {
     background-position-y: 0;
   }
   to {
-    background-position-y: -4096px;
+    background-position-y: -2232px;
   }
 }

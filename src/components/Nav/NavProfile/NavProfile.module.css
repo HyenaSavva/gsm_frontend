@@ -1,0 +1,26 @@
+.profile {
+  margin-left: 1rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  -webkit-user-drag: none;
+}
+
+.user {
+  display: flex;
+}
+
+p {
+  margin: 0;
+  font-size: 1.3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* p:hover {
+  background-color: #383838;
+  transition: 0.5s;
+} */
