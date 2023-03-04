@@ -1,8 +1,6 @@
 .navigation {
   width: 100vw;
   height: 90px;
-  background-color: transparent;
-  /* border-bottom: #ececec 2px solid; */
   color: #1a1a1a;
   display: flex;
   align-items: center;
@@ -22,10 +20,9 @@
 .options {
   margin: 0;
   padding: 0;
+  width: 10vw;
   display: flex;
   list-style-type: none;
-  justify-content: space-between;
-  align-items: center;
 }
 
 li a {
@@ -37,42 +34,21 @@ li a {
   align-items: center;
 }
 
-/* li a:hover {
-  background-color: #383838;
-  transition: 0.4s;
-} */
-
 .logo {
-
   font-size: 3rem;
-  font-weight: 400;
   color: #1a1a1a;
 }
 
-
 @media (min-width: 1024px) {
-  /* text {
-    transition: 0.4s;
-    font-size: 48px;
-    font-weight: 600;
-  } */
-
   li a {
     transition: 0.4s;
-    margin-right: 1rem;
+    margin-right: 3rem;
   }
 }
 
 @media (max-width: 1024px) {
-  /* text {
-    transition: 0.4s;
-    font-size: 1.5rem;
-    font-weight: 600;
-  } */
-
   li a {
     transition: 0.4s;
     margin-right: 0.5rem;
   }
 }
-

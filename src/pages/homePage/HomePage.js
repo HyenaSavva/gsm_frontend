@@ -1,15 +1,12 @@
 import React from "react";
 
-import Background from "../../img/Background.svg";
-import styles from "./HomePage.module.css";
+import Background from "./background/Background";
 
-const HomePage = () => {
+const HomePage = ({ children }) => {
   return (
     <>
-      <div
-        className={styles.background}
-        style={{ backgroundImage: `url(${Background})` }}
-      />
+      {children}
+      <Background />
     </>
   );
 };

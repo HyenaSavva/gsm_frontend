@@ -8,19 +8,13 @@
 
 .user {
   display: flex;
+  cursor: pointer;
 }
 
-p {
+.user p {
   margin: 0;
   font-size: 1.3rem;
 
   display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
-
-/* p:hover {
-  background-color: #383838;
-  transition: 0.5s;
-} */

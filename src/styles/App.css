@@ -11,3 +11,7 @@ a {
   text-decoration: none;
   -webkit-user-drag: none;
 }
+
+p {
+  margin: 0;
+}
