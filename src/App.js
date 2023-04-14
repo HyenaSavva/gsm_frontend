@@ -1,7 +1,11 @@
-import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../src/utils/authentication";
+// import { useEffect } from "react";
+import {
+  Route,
+  Routes,
+  // , useNavigate
+} from "react-router-dom";
+// import { useContext } from "react";
+// import { AuthContext } from "../src/utils/authentication";
 
 import "./styles/App.css";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import BackgroundImg from "../../../static/Background.svg";
+import BackgroundImg from "../../../static/Background.png";
 import styles from "./Background.module.css";
 
 const Background = () => {
