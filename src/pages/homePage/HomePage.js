@@ -1,8 +1,7 @@
 import React from "react";
+import Background from "./Background/Background";
 
-import Background from "./background/Background";
-
-const HomePage = ({ children }) => {
+const HomePage = ({ children, logged }) => {
   return (
     <>
       {children}
