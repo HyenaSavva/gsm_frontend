@@ -1,4 +1,4 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,7 +6,7 @@ body {
 }
 
 @media only screen and (max-width: 1024px) {
-  body {
-    /* background-color: lightblue; */
-  }
+  /* body { */
+  /* background-color: lightblue; */
+  /* } */
 }

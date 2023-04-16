@@ -1,14 +1,18 @@
-// import { useContext } from "react";
-// import { Navigate } from "react-router-dom";
-// import { AuthContext } from "../../utils/authentication";
-// import AuthForm from "../../components/AuthForm/AuthForm";
+import AuthForm from "../../components/AuthForm/AuthForm";
+
+// import BackgroundImg from "../../static/CamerasBackground.png";
+import styles from "./AuthPage.module.css";
 
 const AuthPage = () => {
-  // const { isAuthenticated, login, logout } = useContext(AuthContext);
-
-  // return !isAuthenticated ? <AuthForm /> : <Navigate to="/" />;
-
-  return <>Auth page</>;
+  return (
+    <main className={styles.mainBlock}>
+      <div
+        className={styles.background}
+        // style={{ backgroundImage: `url(${BackgroundImg})` }}
+      />
+      <AuthForm />
+    </main>
+  );
 };
 
 export default AuthPage;
