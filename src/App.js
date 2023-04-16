@@ -1,29 +1,15 @@
-// import { useEffect } from "react";
-import {
-  Route,
-  Routes,
-  // , useNavigate
-} from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "../src/utils/authentication";
+import { Route, Routes } from "react-router-dom";
 
-import "./styles/App.css";
-
-import Layout from "./components/common/Layout";
-import Main from "./components/common/Main/Main";
+import Layout from "./components/Layout/Layout";
+import Main from "./components/Layout/Main/Main";
 import Servicies from "./pages/ServiciesPage/Servicies";
 import HomePage from "./pages/HomePage/HomePage";
 import Portofolio from "./pages/PortofolioPage/Portofolio";
 import AuthPage from "./pages/AuthPage/AuthPage";
 
+import "./styles/App.css";
+
 function App() {
-  // const { isAuthenticated, login, logout } = useContext(AuthContext);
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!isAuthenticated) navigate("/auth");
-  // }, [isAuthenticated]);
-
   return (
     <div className="App">
       <Routes>
