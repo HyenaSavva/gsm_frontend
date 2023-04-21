@@ -1,5 +1,4 @@
 import AuthForm from "../../components/AuthForm/AuthForm";
-
 // import BackgroundImg from "../../static/CamerasBackground.png";
 import styles from "./AuthPage.module.css";
 
@@ -10,7 +9,9 @@ const AuthPage = () => {
         className={styles.background}
         // style={{ backgroundImage: `url(${BackgroundImg})` }}
       />
-      <AuthForm />
+      <div className={styles.formContainer}>
+        <AuthForm />
+      </div>
     </main>
   );
 };

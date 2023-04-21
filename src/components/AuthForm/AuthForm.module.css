@@ -1,26 +1,12 @@
-.form {
-  min-width: 300px;
-  max-width: 30vw;
-  height: 40vh;
-  padding: 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 0 20px rgb(116, 116, 116);
+.loginForm {
+  /* max-width: 300px; */
 }
 
-.form input {
-  margin: 10px 0;
+.loginFormForgot {
+  float: right;
 }
 
-.form label {
-  margin: 10px 0;
-}
-
-.errorMessage {
-  color: brown;
+.loginFormButton {
+  width: 100%;
+  margin-bottom: 0.75rem;
 }

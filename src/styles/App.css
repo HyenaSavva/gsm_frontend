@@ -6,11 +6,10 @@
 }
 
 a {
-  color: #1a1a1a;
   cursor: pointer;
   outline: none;
-  text-decoration: none;
   -webkit-user-drag: none;
+  user-select: none;
 }
 
 p {

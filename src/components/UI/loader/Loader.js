@@ -1,6 +1,6 @@
 import "./Loader.css";
 
-function Loader() {
+const Loader = () => {
   return (
     <div className="lds-ellipsis">
       <div></div>
@@ -9,6 +9,6 @@ function Loader() {
       <div></div>
     </div>
   );
-}
+};
 
 export default Loader;

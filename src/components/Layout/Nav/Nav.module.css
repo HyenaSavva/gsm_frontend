@@ -17,6 +17,11 @@
   white-space: nowrap;
 }
 
+.section a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
 .options {
   margin: 0;
   padding: 0;
@@ -25,8 +30,7 @@
   list-style-type: none;
 }
 
-li a {
-  color: #1a1a1a;
+.options li a {
   font-size: 1.3rem;
 
   display: flex;
