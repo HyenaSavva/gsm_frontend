@@ -1,81 +1,76 @@
-import { Button, Form, Input, Select, Space } from "antd";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import { yupValidator, renderInputs } from "./ServiceInputs/ServiceInputs";
+import {
+  securityTypes,
+  buildingTypes,
+  textTooltips,
+} from "./ServiceInputs/utils";
+
+import { Button, Form, Select, Collapse } from "antd";
+import styles from "./ServiceForm.module.css";
 
 const ServiciesForm = () => {
+  const [selectedOption, setSelectedOption] = useState("");
   const [form] = Form.useForm();
-  const { Option } = Select;
-
-  const areas = [
-    { label: "Beijing", value: "Beijing" },
-    { label: "Shanghai", value: "Shanghai" },
-  ];
-
-  const sights = {
-    Beijing: ["Tiananmen", "Great Wall"],
-    Shanghai: ["Oriental Pearl", "The Bund"],
-  };
+  const { Panel } = Collapse;
 
   const onFinish = (values) => {
     console.log("Received values of form:", values);
   };
 
-  const handleChange = () => {
-    form.setFieldsValue({ sights: [] });
+  const handleChange = (value) => {
+    setSelectedOption(value);
   };
 
   return (
-    <Form form={form} name="Building Type" onFinish={onFinish}>
-      <Form.Item
-        name="area"
-        label="Area"
-        rules={[{ required: true, message: "Missing area" }]}
-      >
-        <Select options={areas} onChange={handleChange} />
-      </Form.Item>
-      <Form.List name="sights">
-        {(fields, { add, remove }) => (
-          <>
-            {fields.map((field) => (
-              <Space key={field.key} align="baseline">
-                {console.log(field)}
-                <Form.Item
-                  {...field}
-                  label="Price"
-                  name={[field.name, "price"]}
-                  rules={[{ required: true, message: "Missing price" }]}
-                >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  {...field}
-                  label="Camere"
-                  name={[field.name, "camere"]}
-                  rules={[{ required: true, message: "Missing camere" }]}
-                >
-                  <Input />
-                </Form.Item>
-                <MinusCircleOutlined onClick={() => remove(field.name)} />
-              </Space>
-            ))}
-
-            <Form.Item>
-              <Button
-                type="dashed"
-                onClick={() => add()}
-                block
-                icon={<PlusOutlined />}
-              >
-                Add sights
-              </Button>
-            </Form.Item>
-          </>
-        )}
-      </Form.List>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
+    <Form
+      form={form}
+      name="form"
+      onFinish={onFinish}
+      autoComplete="off"
+      className={styles.mainForm}
+      labelCol={{ span: 12 }}
+      wrapperCol={{ span: 12 }}
+    >
+      <div className={styles.formItems}>
+        <div className={styles.itemsWrapper}>
+          <Form.Item
+            name="securityType"
+            label="Tipul de securitate"
+            rules={[yupValidator, { required: true, message: "" }]}
+            tooltip={textTooltips.securityType}
+          >
+            <Select options={securityTypes} />
+          </Form.Item>
+          <Form.Item
+            name="buildingType"
+            label="Tipul cladirii"
+            rules={[yupValidator, { required: true, message: "" }]}
+            tooltip={textTooltips.buildingType}
+          >
+            <Select options={buildingTypes} onChange={handleChange} />
+          </Form.Item>
+          <Collapse size="small">
+            <Panel header={<>Caracteristici Optionale</>}>
+              <div className={styles.dropDown}>
+                {renderInputs(selectedOption)}
+              </div>
+            </Panel>
+          </Collapse>
+        </div>
+      </div>
+      <div className={styles.options}>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+        <Form.Item>
+          <Button type="default" htmlType="reset" danger>
+            Reset Fields
+          </Button>
+        </Form.Item>
+      </div>
     </Form>
   );
 };

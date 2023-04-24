@@ -1,0 +1,18 @@
+.cardsContainer {
+  width: 480px;
+  height: 500px;
+  overflow: auto;
+
+  border-radius: 10px;
+  background-color: #f0f2f5;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-bottom: 0.75rem;
+}
+
+
+

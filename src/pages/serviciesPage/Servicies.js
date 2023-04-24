@@ -1,21 +1,28 @@
-import style from "./Services.module.css";
 import ServiciesForm from "../../components/ServiciesForm/ServicesForm";
 import ServiciesContent from "./ServicesContent/ServiciesContent";
 import { useState } from "react";
+
+import { Button } from "antd";
+import styles from "./Services.module.css";
 
 const Servicies = () => {
   const [isSure, setIsSure] = useState(false);
 
   return (
-    <div className={style.container}>
-      <div className={style.formContainer}>
+    <div className={styles.container}>
+      <div className={styles.formContainer}>
         {!isSure ? (
-          <p onClick={() => setIsSure((prev) => !prev)}>Are you sure ?</p>
+          <>
+            <p>Want to create your own project ?</p>
+            <div className={styles.projectSureContainer}></div>
+            <Button type="primary" onClick={() => setIsSure((prev) => !prev)}>
+              Yes
+            </Button>
+          </>
         ) : (
           <ServiciesForm />
         )}
       </div>
-
       <ServiciesContent />
     </div>
   );

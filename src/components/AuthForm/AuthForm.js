@@ -14,7 +14,8 @@ const AuthForm = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
-  const changeLoginForm = () => {
+  const changeLoginForm = (e) => {
+    e.preventDefault();
     setIsLoginForm((prev) => !prev);
   };
 
@@ -85,12 +86,16 @@ const AuthForm = () => {
         {isLoginForm ? (
           <>
             You have no an account?{" "}
-            <a onClick={changeLoginForm} href="/">Register now!</a>
+            <a onClick={changeLoginForm} href="/">
+              Register now!
+            </a>
           </>
         ) : (
           <>
             You have already an account?{" "}
-            <a onClick={changeLoginForm} href="/">Login now!</a>
+            <a onClick={changeLoginForm} href="/">
+              Login now!
+            </a>
           </>
         )}
       </Form.Item>

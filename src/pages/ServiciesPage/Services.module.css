@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  justify-content: center;
+  /* justify-content: space-around; */
   align-items: center;
 
   width: 100%;
@@ -8,5 +8,17 @@
 }
 
 .formContainer {
-  min-width: 25%;
+  display: flex;
+  justify-content: center;
+
+  width: 40vw;
+  margin-left: 10vw;
+}
+
+.formContainer p {
+  font-size: 40px;
+}
+
+.projectSureContainer {
+  height: 200px;
 }
