@@ -1,7 +1,7 @@
 import { firestore } from "../../../db";
 import { collection, getDocs, query } from "firebase/firestore";
 
-export const getItems = async (itemQuery) => {
+export const getItems = async () => {
   const docs = [];
   try {
     const coll = collection(firestore, "spyShopItems");
