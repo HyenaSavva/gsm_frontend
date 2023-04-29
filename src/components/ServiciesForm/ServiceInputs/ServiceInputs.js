@@ -1,6 +1,5 @@
 import * as yup from "yup";
-import { Form, InputNumber, Space } from "antd";
-import { Collapse } from "antd";
+import { Form, InputNumber } from "antd";
 
 const validationSchema = yup.object({
   securityType: yup.string().required("Introduceti tipul de securitate"),
@@ -17,6 +16,23 @@ const validationSchema = yup.object({
     .number()
     .typeError("Introduceti numarul de usi")
     .max(10, "Numar prea mare"),
+  oficiesNumber: yup
+    .number()
+    .typeError("Introduceti numarul de oficii")
+    .max(30, "Numar prea mare"),
+  comercialSpacesNumber: yup
+    .number()
+    .typeError("Introduceti numarul de spatii comerciale")
+    .max(30, "Numar prea mare"),
+  productionHallsNumber: yup
+    .number()
+    .typeError("Introduceti numarul de hale productie")
+    .max(30, "Numar prea mare"),
+  storageHallsNumber: yup
+    .number()
+    .typeError("Introduceti numarul de hale depozitare")
+    .max(30, "Numar prea mare"),
+  itemsData: yup.array().typeError("Introduceti configuratia potrivita"),
 });
 
 export const yupValidator = {
@@ -26,8 +42,6 @@ export const yupValidator = {
 };
 
 export const renderInputs = (selectedOption) => {
-  const { Panel } = Collapse;
-
   if (selectedOption === "residential") {
     return (
       <>
@@ -36,34 +50,50 @@ export const renderInputs = (selectedOption) => {
           label="Nr. de camere"
           rules={[yupValidator]}
         >
-          <InputNumber />
+          <InputNumber maxLength={3} />
         </Form.Item>
         <Form.Item
           name="windowsNumber"
           label="Nr. de geamuri"
           rules={[yupValidator]}
         >
-          <InputNumber />
+          <InputNumber maxLength={3} />
         </Form.Item>
         <Form.Item name="doorsNumber" label="Nr. de usi" rules={[yupValidator]}>
-          <InputNumber />
+          <InputNumber maxLength={3} />
         </Form.Item>
       </>
     );
   } else if (selectedOption === "juridic") {
     return (
       <>
-        <Form.Item label="Nr. de birouri">
-          <InputNumber />
+        <Form.Item
+          name="oficiesNumber"
+          label="Nr. de birouri"
+          rules={[yupValidator]}
+        >
+          <InputNumber maxLength={3} />
         </Form.Item>
-        <Form.Item label="Spatii comericale">
-          <InputNumber />
+        <Form.Item
+          name="comercialSpacesNumber"
+          label="Spatii comericale"
+          rules={[yupValidator]}
+        >
+          <InputNumber maxLength={3} />
         </Form.Item>
-        <Form.Item label="Hale productie">
-          <InputNumber />
+        <Form.Item
+          name="productionHallsNumber"
+          label="Hale productie"
+          rules={[yupValidator]}
+        >
+          <InputNumber maxLength={3} />
         </Form.Item>
-        <Form.Item label="Hale depozitare">
-          <InputNumber />
+        <Form.Item
+          name="storageHallsNumber"
+          label="Hale depozitare"
+          rules={[yupValidator]}
+        >
+          <InputNumber maxLength={3} />
         </Form.Item>
       </>
     );

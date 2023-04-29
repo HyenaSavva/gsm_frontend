@@ -20,6 +20,7 @@
 
 .description {
   animation: fadeIn 0.4s;
+  overflow: hidden;
 }
 
 @keyframes fadeIn {

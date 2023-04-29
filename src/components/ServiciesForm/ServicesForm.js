@@ -8,8 +8,9 @@ import {
 
 import { Button, Form, Select, Collapse } from "antd";
 import styles from "./ServiceForm.module.css";
+import ServiceSearch from "./ServiceSearch/ServiceSearch";
 
-const ServiciesForm = () => {
+const ServiciesForm = ({ itemsData, setCardsSearch }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [form] = Form.useForm();
   const { Panel } = Collapse;
@@ -27,10 +28,10 @@ const ServiciesForm = () => {
       form={form}
       name="form"
       onFinish={onFinish}
+      onFieldsChange={(value) => console.log()}
       autoComplete="off"
       className={styles.mainForm}
       labelCol={{ span: 12 }}
-      wrapperCol={{ span: 12 }}
     >
       <div className={styles.formItems}>
         <div className={styles.itemsWrapper}>
@@ -49,6 +50,18 @@ const ServiciesForm = () => {
             tooltip={textTooltips.buildingType}
           >
             <Select options={buildingTypes} onChange={handleChange} />
+          </Form.Item>
+          <Form.Item
+            name="itemsData"
+            label="Configuratia"
+            rules={[yupValidator]}
+            labelCol={{ span: 5 }}
+            shouldUpdate={true}
+          >
+            <ServiceSearch
+              itemsData={itemsData}
+              setCardsSearch={setCardsSearch}
+            />
           </Form.Item>
           <Collapse size="small">
             <Panel header={<>Caracteristici Optionale</>}>

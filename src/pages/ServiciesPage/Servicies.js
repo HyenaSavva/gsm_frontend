@@ -6,6 +6,8 @@ import { Button } from "antd";
 import styles from "./Services.module.css";
 
 const Servicies = () => {
+  const itemsData = JSON.parse(localStorage.getItem("itemsData")) || [];
+  const [cardsSearch, setCardsSearch] = useState(itemsData);
   const [isSure, setIsSure] = useState(false);
 
   return (
@@ -20,10 +22,13 @@ const Servicies = () => {
             </Button>
           </>
         ) : (
-          <ServiciesForm />
+          <ServiciesForm
+            setCardsSearch={setCardsSearch}
+            itemsData={itemsData}
+          />
         )}
       </div>
-      <ServiciesContent />
+      <ServiciesContent cardsSearch={cardsSearch} itemsData={itemsData} />
     </div>
   );
 };

@@ -15,3 +15,7 @@ a {
 p {
   margin: 0;
 }
+
+.ant-select-dropdown-menu-item-group-title {
+  font-size: 30px;
+}

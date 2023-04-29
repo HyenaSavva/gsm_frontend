@@ -1,25 +1,36 @@
-import { getAsyncCards } from "./utils";
-
 import styles from "./ServiciesContent.module.css";
 import CustomCard from "./CustomCard/CustomCard";
-import { useEffect, useState } from "react";
 
-const ServiciesContent = () => {
-  const [cards, setCards] = useState([]);
+import { getItems } from "./utils";
+import { useEffect, useState, useMemo } from "react";
+
+const ServiciesContent = ({ cardsSearch, itemsData }) => {
+  const [cards, setCards] = useState(itemsData);
 
   useEffect(() => {
-    (async () => {
-      setCards(await getAsyncCards());
-    })();
-  }, []);
+    const fetchData = async () => {
+      const items = await getItems();
+      localStorage.setItem("itemsData", JSON.stringify(items));
+      setCards(items);
+    };
+
+    if (cards.length === 0) {
+      fetchData();
+      console.log("Data was fetched");
+    }
+  }, [cards.length]);
+
+  const cardsList = useMemo(
+    () =>
+      cardsSearch
+        .map((card) => <CustomCard card={card} key={card.itemId} />)
+        .slice(0, 30),
+    [cardsSearch]
+  );
 
   return (
     <div className={styles.cardsContainer}>
-      <div className={styles.cardsWrapper}>
-        {cards.map((card) => (
-          <CustomCard card={card} key={card.src} />
-        ))}
-      </div>
+      <div className={styles.cardsWrapper}>{cardsList}</div>
     </div>
   );
 };

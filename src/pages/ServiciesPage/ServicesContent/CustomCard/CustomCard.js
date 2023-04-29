@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { Card, Tooltip } from "antd";
 import { InfoCircleOutlined, LinkOutlined } from "@ant-design/icons";
@@ -10,21 +11,25 @@ const CustomCard = ({ card }) => {
 
   return (
     <Card
-      key={card.src}
+      key={card.itemId}
       size="small"
       hoverable
       bordered={false}
       className={styles.card}
       cover={
         !isDescriptionOpen ? (
-          <img alt="example" src={card.src} className={styles.image} />
+          <LazyLoadImage
+            alt="example"
+            src={card.image}
+            className={styles.image}
+          />
         ) : null
       }
       actions={[
-        <Tooltip title="Link spre produs" mouseEnterDelay="0.8">
-          <LinkOutlined key="setting" onClick={() => console.log("setting")} />
+        <Tooltip title="Link spre produs" mouseEnterDelay="1.5">
+          <LinkOutlined key="setting" />
         </Tooltip>,
-        <Tooltip title="Descrierea produsului" mouseEnterDelay="0.8">
+        <Tooltip title="Descrierea produsului" mouseEnterDelay="1.5">
           <InfoCircleOutlined
             key="edit"
             onClick={() => setIsDescriptionOpen((prev) => !prev)}
@@ -35,7 +40,7 @@ const CustomCard = ({ card }) => {
       {!isDescriptionOpen ? (
         <Meta
           title={card.title}
-          description={card.description + " lei"}
+          description={card.price + " lei"}
           className={styles.meta}
         />
       ) : (

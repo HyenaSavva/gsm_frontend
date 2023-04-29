@@ -1,5 +1,5 @@
 .cardsContainer {
-  width: 480px;
+  width: 780px;
   height: 500px;
   overflow: auto;
 
@@ -14,5 +14,12 @@
   margin-bottom: 0.75rem;
 }
 
+.searchInput {
+  display: flex;
+  flex-grow: 1;
+  margin: 1rem 0.5rem 0.5rem 0.5rem;
+}
 
-
+.ant-select-selection-item {
+  background-color: #f50c5b;
+}
