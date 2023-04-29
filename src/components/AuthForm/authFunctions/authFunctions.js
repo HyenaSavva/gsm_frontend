@@ -20,6 +20,7 @@ export const signInWithGoogle = async () => {
     const errorMessage = error.message;
     const email = error.customData.email;
     const credential = GoogleAuthProvider.credentialFromError(error);
+    return { errorCode, errorMessage, email, credential };
   }
 };
 

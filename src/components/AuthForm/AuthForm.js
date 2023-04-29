@@ -1,108 +1,105 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "./authFunctions/AuthContextProvider";
-import {
-  signIn,
-  login,
-  logout,
-  signInWithGoogle,
-} from "./authFunctions/authFunctions";
-
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
+import { yupValidator } from "./authFunctions/utils";
+import { signIn, login, signInWithGoogle } from "./authFunctions/authFunctions";
 
-import styles from "./AuthForm.module.css";
-// import CustomInput from "../UI/inputs/CustomInput";
+import { LockOutlined, UserOutlined, GoogleOutlined } from "@ant-design/icons";
+import { Button, Checkbox, Form, Input } from "antd";
 import Loader from "../UI/loader/Loader";
+import styles from "./AuthForm.module.css";
 
 const AuthForm = () => {
-  const { authState } = useContext(AuthContext);
-
-  const [isLoginForm, setIsLoginForm] = useState(false);
+  const [isLoginForm, setIsLoginForm] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [form] = Form.useForm();
   const navigate = useNavigate();
+
+  const changeLoginForm = (e) => {
+    e.preventDefault();
+    setIsLoginForm((prev) => !prev);
+  };
 
   const googleSignInHandler = async () => {
     setIsLoading(true);
     await signInWithGoogle();
     setIsLoading(false);
-  };
-
-  const backHandler = () => {
     navigate("/");
   };
 
-  const logoutHandler = async () => {
-    await logout();
+  const onFinish = async ({ Email, Password, remember }) => {
+    if (isLoginForm) {
+      setIsLoading(true);
+      await login(Email, Password);
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      await signIn(Email, Password);
+      setIsLoading(false);
+    }
+    navigate("/");
   };
 
   return (
-    <Formik
-      initialValues={{
-        email: "",
-        password: "",
-      }}
-      validationSchema={Yup.object({
-        email: Yup.string().email("Invalid email address").required("Required"),
-        password: Yup.string()
-          .min(8, "Must be 8 letters min")
-          .max(20, "Too long!")
-          .required("Required"),
-      })}
-      onSubmit={async ({ email, password }) => {
-        if (isLoginForm) {
-          setIsLoading(true);
-          await signIn(email, password);
-          setIsLoading(false);
-        } else {
-          setIsLoading(true);
-          await login(email, password);
-          setIsLoading(false);
-        }
-      }}
+    <Form
+      form={form}
+      name="form"
+      className={styles.loginForm}
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      size="large"
     >
-      <>
-        {!isLoading & !authState.loading ? (
-          <Form className={styles.form}>
-            <label htmlFor="email">Email Address</label>
-            <Field
-              name="email"
-              type="email"
-              // component={CustomInput}
-              placeholder="example@gmail.com"
-              style={styles.someField}
-            />
-            <ErrorMessage name="email" component="label" />
-            <label htmlFor="password">Password</label>
-            <Field name="password" type="password" placeholder="password" />
-            <ErrorMessage
-              name="password"
-              component="label"
-              className={styles.errorMessage}
-            />
-            <button type="submit">Submit</button>
-            <button onClick={googleSignInHandler} type="button">
-              LogIn with google
-            </button>
-            <p
-              onClick={() => {
-                setIsLoginForm((prev) => !prev);
-              }}
-            >
-              {isLoginForm ? <>Switch to Log In</> : <>Switch to Sign In</>}
-            </p>
-            <button onClick={backHandler} type="button">
-              Back to HomePage
-            </button>
-            <button onClick={logoutHandler} type="button">
-              Logout
-            </button>
-          </Form>
+      <Form.Item name="Email" rules={[yupValidator]}>
+        <Input prefix={<UserOutlined />} placeholder="Email" />
+      </Form.Item>
+      <Form.Item name="Password" rules={[yupValidator]}>
+        <Input.Password
+          prefix={<LockOutlined />}
+          type="password"
+          placeholder="Password"
+        />
+      </Form.Item>
+      <Form.Item>
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+        <a className={styles.loginFormForgot} href="/">
+          Forgot password
+        </a>
+      </Form.Item>
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className={styles.loginFormButton}
+        >
+          {isLoginForm ? <>Log in</> : <>Sign In</>}
+        </Button>
+        <Button
+          type="default"
+          htmlType="button"
+          onClick={googleSignInHandler}
+          icon={!isLoading ? <GoogleOutlined /> : null}
+          className={styles.loginFormButton}
+        >
+          {!isLoading ? <>Log in with Google</> : <Loader />}
+        </Button>
+        {isLoginForm ? (
+          <>
+            You have no an account?{" "}
+            <a onClick={changeLoginForm} href="/">
+              Register now!
+            </a>
+          </>
         ) : (
-          <Loader />
+          <>
+            You have already an account?{" "}
+            <a onClick={changeLoginForm} href="/">
+              Login now!
+            </a>
+          </>
         )}
-      </>
-    </Formik>
+      </Form.Item>
+    </Form>
   );
 };
 

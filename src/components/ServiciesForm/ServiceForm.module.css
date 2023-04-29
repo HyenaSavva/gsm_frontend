@@ -1,0 +1,66 @@
+.mainForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 500px;
+
+  animation: fadeIn 0.4s;
+  user-select: none;
+}
+
+.formItems {
+  overflow: auto;
+}
+
+.itemsWrapper {
+  padding-right: 20px;
+}
+
+.options {
+  display: flex;
+}
+
+.options button {
+  margin-right: 2rem;
+}
+
+.dropDown {
+  animation: fadeIn 0.4s;
+  width: 70%;
+}
+
+.submit {
+  background-color: green;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dbdbdb;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #cecece;
+}
+
+@keyframes fadeIn {
+  0% {
+    scale: 0.95;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}

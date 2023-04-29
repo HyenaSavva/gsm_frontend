@@ -6,13 +6,16 @@
 }
 
 a {
-  color: #1a1a1a;
   cursor: pointer;
   outline: none;
-  text-decoration: none;
   -webkit-user-drag: none;
+  user-select: none;
 }
 
 p {
   margin: 0;
+}
+
+.ant-select-dropdown-menu-item-group-title {
+  font-size: 30px;
 }

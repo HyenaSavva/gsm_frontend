@@ -1,8 +1,8 @@
 .lds-ellipsis {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  left: -40px;
+  top: -44px;
   animation: fadeIn 0.8s;
 }
 .lds-ellipsis div {

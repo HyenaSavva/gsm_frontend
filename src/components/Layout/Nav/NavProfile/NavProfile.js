@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../../../components/AuthForm/authFunctions/AuthContextProvider";
+import { logout } from "../../../AuthForm/authFunctions/authFunctions";
+// import { useContext } from "react";
+// import { AuthContext } from "../../../../components/AuthForm/authFunctions/AuthContextProvider";
 
 import profile from "../../../../static/NavProfile.png";
 import styles from "./NavProfile.module.css";
 
 const NavProfile = () => {
-  const { logout } = useContext(AuthContext);
   return (
     <Link to="/auth">
       <div className={styles.user}>

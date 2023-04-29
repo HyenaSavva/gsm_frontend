@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+
+  width: 40vw;
+  height: 500px;
+  margin-left: 10vw;
+}
+
+.formContainer p {
+  font-size: 40px;
+}
+
+.projectSureContainer {
+  height: 200px;
+}

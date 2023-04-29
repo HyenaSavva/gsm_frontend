@@ -1,0 +1,35 @@
+.card {
+  margin: 0.75rem 0 0 0.75rem;
+  width: 140px;
+  height: 260px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  animation: fadeIn 0.4s;
+}
+
+.card img {
+  -webkit-user-drag: none;
+}
+
+.meta {
+  font-weight: bold;
+}
+
+.description {
+  animation: fadeIn 0.4s;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  0% {
+    scale: 0.95;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
