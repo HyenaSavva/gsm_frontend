@@ -10,6 +10,7 @@
 .formContainer {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   width: 40vw;
   height: 500px;
@@ -22,4 +23,6 @@
 
 .projectSureContainer {
   height: 200px;
+  align-items: flex-end;
+  display: flex;
 }

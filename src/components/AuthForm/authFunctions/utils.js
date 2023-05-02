@@ -14,7 +14,7 @@ const validationSchema = yup.object({
     .min(8, "Password need to have min 8 characters."),
 });
 
-export const yupValidator = {
+export const yupValidator = { // de pe stackoverflow
   async validator({ field }, value) {
     validationSchema.validateSyncAt(field, { [field]: value });
   },

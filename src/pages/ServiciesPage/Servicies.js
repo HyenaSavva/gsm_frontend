@@ -31,10 +31,11 @@ const Servicies = () => {
         {!isSure ? (
           <>
             <p>Want to create your own project ?</p>
-            <div className={styles.projectSureContainer}></div>
-            <Button type="primary" onClick={() => setIsSure((prev) => !prev)}>
-              Yes
-            </Button>
+            <div className={styles.projectSureContainer}>
+              <Button type="primary" onClick={() => setIsSure((prev) => !prev)}>
+                Yes
+              </Button>
+            </div>
           </>
         ) : (
           <ServiciesForm
