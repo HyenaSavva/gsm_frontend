@@ -5,7 +5,6 @@ import { signIn, login, signInWithGoogle } from "./authFunctions/authFunctions";
 
 import { LockOutlined, UserOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
-import Loader from "../UI/loader/Loader";
 import styles from "./AuthForm.module.css";
 
 const AuthForm = () => {
@@ -22,14 +21,15 @@ const AuthForm = () => {
   const googleSignInHandler = async () => {
     setIsLoading(true);
     await signInWithGoogle();
+
     setIsLoading(false);
     navigate("/");
   };
 
-  const onFinish = async ({ Email, Password, remember }) => {
+  const onSubmitHandler = async ({ Email, Password, remember }) => {
     if (isLoginForm) {
       setIsLoading(true);
-      await login(Email, Password);
+      const user = await login(Email, Password);
       setIsLoading(false);
     } else {
       setIsLoading(true);
@@ -45,7 +45,7 @@ const AuthForm = () => {
       name="form"
       className={styles.loginForm}
       initialValues={{ remember: true }}
-      onFinish={onFinish}
+      onFinish={onSubmitHandler}
       size="large"
     >
       <Form.Item name="Email" rules={[yupValidator]}>
@@ -68,6 +68,7 @@ const AuthForm = () => {
       </Form.Item>
       <Form.Item>
         <Button
+          loading={isLoading}
           type="primary"
           htmlType="submit"
           className={styles.loginFormButton}
@@ -75,13 +76,14 @@ const AuthForm = () => {
           {isLoginForm ? <>Log in</> : <>Sign In</>}
         </Button>
         <Button
+          loading={isLoading}
           type="default"
           htmlType="button"
           onClick={googleSignInHandler}
           icon={!isLoading ? <GoogleOutlined /> : null}
           className={styles.loginFormButton}
         >
-          {!isLoading ? <>Log in with Google</> : <Loader />}
+          <>Log in with Google</>
         </Button>
         {isLoginForm ? (
           <>

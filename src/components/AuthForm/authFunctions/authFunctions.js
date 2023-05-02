@@ -13,8 +13,12 @@ export const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
-    const user = result.user;
-    return { token, user };
+    const userData = result.user;
+    return {
+      token,
+      userData: { ...userData.providerData[0] },
+      credential: { ...credential },
+    };
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -26,12 +30,8 @@ export const signInWithGoogle = async () => {
 
 export const signIn = async (email, password) => {
   try {
-    const userCredentials = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    return userCredentials;
+    await createUserWithEmailAndPassword(auth, email, password);
+    return;
   } catch (err) {
     return err;
   }
@@ -39,12 +39,8 @@ export const signIn = async (email, password) => {
 
 export const login = async (email, password) => {
   try {
-    const userCredentials = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    return userCredentials;
+    await signInWithEmailAndPassword(auth, email, password);
+    return;
   } catch (err) {
     return err;
   }

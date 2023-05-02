@@ -1,36 +1,9 @@
-.profile {
-  margin-left: 1rem;
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
-  -webkit-user-drag: none;
-}
-
-.user {
+.dropDownProfile {
   display: flex;
-  position: relative;
-  cursor: pointer;
-}
-
-.user:hover .dropdownContent {
-  display: block;
-}
-
-.user p {
-  margin: 0;
-  font-size: 1.3rem;
-
-  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.dropdownContent {
-  display: none;
-  position: absolute;
-  top: 55px;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-  z-index: 1;
+.dropDownProfile > div > span {
+  font-weight: 600;
 }
