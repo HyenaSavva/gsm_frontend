@@ -48,8 +48,9 @@ const Nav = () => {
           },
           {
             key: "/profile",
+            disabled: true,
             label: <NavProfile />,
-            className: styles.profile,
+            style: { cursor: "pointer" },
           },
         ]}
       />
