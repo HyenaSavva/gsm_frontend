@@ -1,5 +1,7 @@
 .main {
   width: 100%;
-  height: calc(100% - 90px);
+  top: 64px;
+  position: relative;
+  height: calc(100% - 64px);
   overflow: hidden;
 }
