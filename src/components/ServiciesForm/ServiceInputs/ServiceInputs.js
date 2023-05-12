@@ -32,7 +32,7 @@ const validationSchema = yup.object({
     .number()
     .typeError("Introduceti numarul de hale depozitare")
     .max(30, "Numar prea mare"),
-  itemsData: yup.array().typeError("Introduceti configuratia potrivita"),
+  cartItems: yup.array(),
 });
 
 export const yupValidator = {

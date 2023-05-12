@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 import Background from "./Background/Background";
 
-const HomePage = ({ children, logged }) => {
+const HomePage = ({ children }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
