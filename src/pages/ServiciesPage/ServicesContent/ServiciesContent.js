@@ -11,7 +11,7 @@ const ServiciesContent = ({ cardsSearch }) => {
         .map((card, index) => (
           <CustomCard card={card} key={card.itemId} index={index} />
         ))
-        .slice(0, 30),
+        .slice(0, 60),
     [cardsSearch]
   );
 

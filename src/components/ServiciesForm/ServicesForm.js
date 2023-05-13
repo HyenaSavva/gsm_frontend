@@ -1,10 +1,15 @@
 import { useMemo, useState } from "react";
-import { yupValidator, renderInputs } from "./ServiceInputs/ServiceInputs";
+import {
+  yupValidator,
+  renderInputs,
+  fields,
+} from "./ServiceInputs/ServiceInputs";
 import {
   securityTypes,
   buildingTypes,
   textTooltips,
 } from "./ServiceInputs/utils";
+import { motion } from "framer-motion";
 import { Button, Form, Select, Collapse, Input } from "antd";
 import ServiceCart from "./ServiceCart/ServiceCart";
 
@@ -57,11 +62,9 @@ const ServiciesForm = ({ itemsData, cartItems }) => {
 
         <ServiceCart cartItems={cartItems} />
 
-        <Collapse size="small">
+        <Collapse size="small" className={styles.dropDown}>
           <Panel header={<>Caracteristici Optionale</>}>
-            <div className={styles.dropDown}>
-              {renderInputs(selectedOption)}
-            </div>
+            {renderInputs(selectedOption)}
           </Panel>
         </Collapse>
       </>
@@ -70,35 +73,29 @@ const ServiciesForm = ({ itemsData, cartItems }) => {
   );
 
   return (
-    <Form
-      form={form}
-      name="form"
-      onFinish={onFinish}
-      autoComplete="off"
-      className={styles.mainForm}
-    >
+    <Form form={form} name="form" onFinish={onFinish} autoComplete="off">
       <div className={styles.formItems}>
         <div className={styles.itemsWrapper}>{formItems}</div>
-      </div>
-      <div className={styles.options}>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
+        <motion.div className={styles.options} animate>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
 
-        <Form.Item>
-          <Button
-            type="default"
-            danger
-            onClick={(e) => {
-              console.log("reset");
-              form.resetFields(["securityType", "buildingType"]);
-            }}
-          >
-            Reset Fields
-          </Button>
-        </Form.Item>
+          <Form.Item>
+            <Button
+              type="default"
+              danger
+              onClick={(e) => {
+                console.log("reset");
+                form.resetFields(fields);
+              }}
+            >
+              Reset Fields
+            </Button>
+          </Form.Item>
+        </motion.div>
       </div>
     </Form>
   );
