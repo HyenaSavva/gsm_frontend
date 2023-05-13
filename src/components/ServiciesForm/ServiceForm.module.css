@@ -1,23 +1,10 @@
-.mainForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  width: 500px;
-  height: 500px;
-
-  user-select: none;
-}
-
 .formItems {
   overflow: auto;
 }
 
-.itemsWrapper {
-  padding-right: 20px;
-}
-
 .options {
+  /* position: absolute; */
+  z-index: 1;
   display: flex;
 }
 
@@ -26,41 +13,9 @@
 }
 
 .dropDown {
-  width: 70%;
+  margin-bottom: 1.5rem;
 }
 
 .submit {
   background-color: green;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 5px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #dbdbdb;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #cecece;
-}
-
-@keyframes fadeIn {
-  0% {
-    scale: 0.95;
-    opacity: 0;
-  }
-  100% {
-    scale: 1;
-    opacity: 1;
-  }
 }

@@ -13,7 +13,9 @@ const CustomCard = ({ card, index }) => {
   const momoizedActions = useMemo(
     () => [
       <Tooltip title="Link spre produs" mouseEnterDelay="1.5">
-        <LinkOutlined key="setting" />
+        <a href={card.href} target="_blank">
+          <LinkOutlined key="setting" />
+        </a>
       </Tooltip>,
       <Tooltip title="Descrierea produsului" mouseEnterDelay="1.5">
         <InfoCircleOutlined
@@ -22,7 +24,7 @@ const CustomCard = ({ card, index }) => {
         />
       </Tooltip>,
     ],
-    [isDescriptionOpen]
+    []
   );
 
   const memoizedCard = useMemo(
@@ -51,7 +53,7 @@ const CustomCard = ({ card, index }) => {
             className={styles.meta}
           />
         ) : (
-          <Meta description={card.title} className={styles.description}></Meta>
+          <Meta description={card.title} className={styles.description} />
         )}
       </Card>
     ),

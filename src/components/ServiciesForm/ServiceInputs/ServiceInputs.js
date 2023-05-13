@@ -41,6 +41,18 @@ export const yupValidator = {
   },
 };
 
+export const fields = [
+  "securityType",
+  "buildingType",
+  "camerasNumber",
+  "windowsNumber",
+  "doorsNumber",
+  "oficiesNumber",
+  "comercialSpacesNumber",
+  "productionHallsNumber",
+  "storageHallsNumber",
+];
+
 export const renderInputs = (selectedOption) => {
   if (selectedOption === "residential") {
     return (

@@ -5,9 +5,8 @@
   position: relative;
 
   height: 285px;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   border: 1px dashed #81c9ff;
-  border-radius: 10px;
 }
 
 .background {

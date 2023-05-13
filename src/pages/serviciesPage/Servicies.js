@@ -1,5 +1,5 @@
 import ServiciesForm from "../../components/ServiciesForm/ServicesForm";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import ServiciesContent from "./ServicesContent/ServiciesContent";
 import { useState, useEffect } from "react";
 import { getItems } from "./ServicesContent/utils";
@@ -9,7 +9,7 @@ import styles from "./Services.module.css";
 
 const Servicies = () => {
   const itemsData = JSON.parse(localStorage.getItem("itemsData")) || [];
-  const [cardsSearch, setCardsSearch] = useState(itemsData.slice(0, 20));
+  const [cardsSearch, setCardsSearch] = useState(itemsData.slice(0, 60));
   const [cartItems, setCartItems] = useState([]);
   const [cards, setCards] = useState(itemsData);
 
@@ -78,11 +78,13 @@ const Servicies = () => {
     >
       <DragDropContext onDragEnd={onDragEnd}>
         <div className={styles.formContainer}>
-          <ServiciesForm
-            setCardsSearch={setCardsSearch}
-            itemsData={itemsData}
-            cartItems={cartItems}
-          />
+          <div className={styles.mainForm}>
+            <ServiciesForm
+              setCardsSearch={setCardsSearch}
+              itemsData={itemsData}
+              cartItems={cartItems}
+            />
+          </div>
         </div>
         <ServiciesContent cardsSearch={cardsSearch} itemsData={itemsData} />
       </DragDropContext>
