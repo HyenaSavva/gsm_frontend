@@ -2,7 +2,7 @@ import NavProfile from "./NavProfile/NavProfile";
 
 import styles from "./Nav.module.css";
 
-const padding = { padding: "0 16px" };
+const padding = { padding: "0 16px", borderRadius: 0 };
 export const menuItems = [
   {
     key: "/",

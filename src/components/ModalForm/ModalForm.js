@@ -20,14 +20,6 @@ const ModalForm = ({ setIsLoading }) => {
         autoComplete="off"
       >
         <Form.Item
-          name="Email"
-          label="Email user"
-          rules={[yupValidator]}
-          required
-        >
-          <Input placeholder="Email" />
-        </Form.Item>
-        <Form.Item
           name="CaseTitle"
           label="Titlul case-ului"
           tooltip={tooltips.caseTooltip}
@@ -42,10 +34,10 @@ const ModalForm = ({ setIsLoading }) => {
           rules={[yupValidator]}
         >
           <Input.TextArea
-            placeholder="Descrierea problemei"
+            placeholder="Descrieti problema care ati intampinat"
             autoSize={{
-              minRows: 4,
-              maxRows: 9,
+              minRows: 6,
+              maxRows: 10,
             }}
             showCount
             maxLength={500}

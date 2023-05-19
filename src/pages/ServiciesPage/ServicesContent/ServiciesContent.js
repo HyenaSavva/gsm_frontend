@@ -1,10 +1,11 @@
-import styles from "./ServiciesContent.module.css";
 import CustomCard from "../../../components/CustomCard/CustomCard";
-
+import ServiceSearch from "../../../components/ServiceSearch/ServiceSearch";
 import { useMemo } from "react";
 import { Droppable } from "react-beautiful-dnd";
 
-const ServiciesContent = ({ cardsSearch }) => {
+import styles from "./ServiciesContent.module.css";
+
+const ServiciesContent = ({ cardsSearch, itemsData, setCardsSearch }) => {
   const cardsList = useMemo(
     () =>
       cardsSearch
@@ -17,6 +18,12 @@ const ServiciesContent = ({ cardsSearch }) => {
 
   return (
     <div className={styles.cardsContainer}>
+      <ServiceSearch
+        itemsData={itemsData}
+        setCardsSearch={setCardsSearch}
+        cardsSearch={cardsSearch}
+      />
+      
       <div className={styles.cardsWrapper}>
         <Droppable droppableId="searchDroppable" direction="grid">
           {(provided) => {
