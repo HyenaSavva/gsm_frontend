@@ -5,10 +5,11 @@ import CustomCard from "../../CustomCard/CustomCard";
 
 import styles from "./ServiceCart.module.css";
 
-const ServiceCart = ({ cartItems }) => {
+const ServiceCart = ({ cartItems, onChange }) => {
   return (
     <Droppable droppableId="cartDroppable" direction="grid">
       {(provided) => {
+        onChange();
         return (
           <div
             {...provided.droppableProps}

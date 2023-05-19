@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Select } from "antd";
+import { Input } from "antd";
 
 const ServiceSearch = ({ itemsData, setCardsSearch, onChange }) => {
   const handleSearch = (value) => {
@@ -32,7 +32,7 @@ const ServiceSearch = ({ itemsData, setCardsSearch, onChange }) => {
   );
 
   return (
-    <Select
+    <Input
       mode="multiple"
       optionFilterProp="label"
       listHeight={160}
