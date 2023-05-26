@@ -13,7 +13,7 @@ const CustomCard = ({ card, index }) => {
   const momoizedActions = useMemo(
     () => [
       <Tooltip title="Link spre produs" mouseEnterDelay="1.5">
-        <a href={card.href} target="_blank">
+        <a href={card.href} target="_new">
           <LinkOutlined key="setting" />
         </a>
       </Tooltip>,
@@ -24,7 +24,7 @@ const CustomCard = ({ card, index }) => {
         />
       </Tooltip>,
     ],
-    []
+    [card.href]
   );
 
   const memoizedCard = useMemo(
@@ -57,7 +57,7 @@ const CustomCard = ({ card, index }) => {
         )}
       </Card>
     ),
-    [card, isDescriptionOpen]
+    [card, isDescriptionOpen, momoizedActions]
   );
 
   return (

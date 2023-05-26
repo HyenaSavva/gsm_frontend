@@ -5,8 +5,8 @@ export const getItems = async () => {
   const docs = [];
   try {
     const coll = collection(firestore, "spyShopItems");
-    const q = query(coll);
-    const items = await getDocs(q);
+    const filter = query(coll);
+    const items = await getDocs(filter);
     items.forEach((doc) => docs.push(doc.data()));
     return docs;
   } catch (err) {

@@ -1,24 +1,32 @@
 .cardsContainer {
   height: 100%;
-  width: 65%;
+  width: 90%;
+  position: relative;
 
-  overflow-x: hidden;
   background-color: #f0f2f5;
 }
 
 .cardsWrapper {
-  display: flex;
-  flex-wrap: wrap;
+  overflow: auto;
+  overflow-x: hidden;
+  height: calc(100% - 11rem);
 
-  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
 }
 
-.searchInput {
-  display: flex;
-  flex-grow: 1;
-  margin: 1rem 0.5rem 0.5rem 0.5rem;
+.searchContainer {
+  position: sticky;
+  height: 7rem;
+  top: 0;
+  z-index: 10;
+  background-color: #ffffff;
+  border: 1px solid #f0f2f5;
+  padding: 0.5rem;
 }
 
-.ant-select-selection-item {
-  background-color: #f50c5b;
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
 }

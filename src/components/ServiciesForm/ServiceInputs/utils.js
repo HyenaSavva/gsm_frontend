@@ -1,7 +1,7 @@
 export const securityTypes = [
   {
     label: "Supraveghere",
-    value: "Supraveghere",
+    value: "supraveghere",
   },
   {
     label: "Antifractie",

@@ -10,9 +10,9 @@ import styles from "./Services.module.css";
 
 const Servicies = () => {
   const itemsData = JSON.parse(localStorage.getItem("itemsData")) || [];
-  const [cardsSearch, setCardsSearch] = useState(itemsData.slice(0, 60));
-  const [cartItems, setCartItems] = useState([]);
+  const [cardsSearch, setCardsSearch] = useState(itemsData);
   const [cards, setCards] = useState(itemsData);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,13 +40,7 @@ const Servicies = () => {
         }
       >
         <div className={styles.formContainer}>
-          <div className={styles.mainForm}>
-            <ServiciesForm
-              setCardsSearch={setCardsSearch}
-              itemsData={itemsData}
-              cartItems={cartItems}
-            />
-          </div>
+          <ServiciesForm cartItems={cartItems} />
         </div>
         <ServiciesContent
           setCardsSearch={setCardsSearch}
