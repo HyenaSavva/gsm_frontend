@@ -1,18 +1,16 @@
 import { useMemo, useState, useContext } from "react";
 import {
-  yupValidator,
-  renderInputs,
-  fields,
-} from "./ServiceInputs/ServiceInputs";
-import {
   securityTypes,
   buildingTypes,
   textTooltips,
-} from "./ServiceInputs/utils";
-import { postProject } from "../../api/api";
+  SUCCESS,
+  WARNING,
+} from "utils/constants";
+import { postProject } from "api";
 import { Button, Form, Select, Collapse, Input, notification } from "antd";
-import { AuthContext } from "../AuthForm/authFunctions/AuthContextProvider";
-import ServiceCart from "./ServiceCart/ServiceCart";
+import { AuthContext } from "auth/AuthContextProvider";
+import { yupValidator, renderInputs, fields } from "./ServiceInputs";
+import ServiceCart from "./ServiceCart";
 
 import styles from "./ServiceForm.module.css";
 
@@ -35,18 +33,7 @@ const ServiciesForm = ({ itemsData, cartItems }) => {
 
     setTimeout(() => {
       setLoading(false);
-      result.status === 200
-        ? api.success({
-            message: "Success",
-            description: "yes",
-            duration: 3,
-            placement: "bottomLeft",
-          })
-        : api.warning({
-            message: "Something goes wrong",
-            duration: 3,
-            placement: "bottomLeft",
-          });
+      result.status === 200 ? api.success(SUCCESS) : api.warning(WARNING);
     }, 1500);
   };
 

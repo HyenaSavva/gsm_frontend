@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Input, AutoComplete, Checkbox, Select } from "antd";
-import { checkBoxOptions } from "./utils";
+import { Input, AutoComplete, Checkbox } from "antd";
+import { checkBoxOptions } from "utils/constants";
 
 const ServiceSearch = ({ itemsData, setCardsSearch }) => {
   const cardsList = itemsData.map((item) => {

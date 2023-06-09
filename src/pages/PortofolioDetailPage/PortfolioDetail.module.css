@@ -1,0 +1,40 @@
+.portfolioDetailContainer {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.mainColumn {
+  margin-top: 2.2rem;
+}
+
+.mainColumn h1,
+h2 {
+  font-weight: normal;
+}
+
+.mainColumn > hr {
+  border: 0;
+  height: 1px;
+  margin: 1.5rem 0 1.5rem 0;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #4f85c2, #ccc);
+}
+
+.gallery {
+  width: 932px;
+  max-height: 600px;
+  overflow: auto;
+}
+
+.mainColumn p {
+  color: #565656;
+}
+
+.location {
+  height: 80vh;
+}

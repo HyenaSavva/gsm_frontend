@@ -1,17 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import { menuItems } from "./utils";
-import { useMemo } from "react";
+import { menuItems } from "./navButtons";
+import { memo } from "react";
 
 import styles from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = memo(() => {
   const { Header } = Layout;
   const navigate = useNavigate();
-  const items = useMemo(() => menuItems, [menuItems]);
 
   const handleNavigation = ({ key }) => {
-    if (key !== "/profile") navigate(key);
+    navigate(key);
   };
 
   return (
@@ -20,10 +19,10 @@ const Nav = () => {
         theme="light"
         mode="horizontal"
         onClick={handleNavigation}
-        items={items}
+        items={menuItems}
       />
     </Header>
   );
-};
+});
 
 export default Nav;

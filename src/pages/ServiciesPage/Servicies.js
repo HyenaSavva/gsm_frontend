@@ -1,8 +1,8 @@
-import ServiciesForm from "../../components/ServiciesForm/ServicesForm";
+import ServiciesForm from "components/ServiciesForm/ServicesForm";
 import { DragDropContext } from "react-beautiful-dnd";
-import ServiciesContent from "./ServicesContent/ServiciesContent";
+import ServiciesContent from "./ServicesContent";
 import { useState, useEffect } from "react";
-import { getItems } from "./ServicesContent/utils";
+import { getItems } from "api";
 import { motion } from "framer-motion";
 import { onDragEnd } from "./dragLogic";
 

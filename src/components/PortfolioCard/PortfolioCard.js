@@ -1,61 +1,56 @@
-import { Card, Avatar, Switch, Carousel } from "antd";
+import { Card, Carousel } from "antd";
 import { FolderViewOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { storage } from "../../db";
-import { ref, getDownloadURL } from "firebase/storage";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import styles from "./PortfolioCard.module.css";
 import { useNavigate } from "react-router-dom";
+import { fetchImages } from "api";
 
 const PortfolioCard = ({ card }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [img, setImg] = useState(card.imagesRefs);
+  const date = new Date(card.createdAt._seconds * 1000);
   const navigate = useNavigate();
 
   const { Meta } = Card;
 
   useEffect(() => {
-    const fetchImg = async () => {
-      const refs = card.imagesRefs.map((imgRef) =>
-        getDownloadURL(ref(storage, imgRef))
-      );
-      const images = await Promise.all(refs);
-      setImg(images);
-    };
+    setTimeout(() => {
+      // for loading demonstration (will be removed)
+      const fetchImg = async () => {
+        const images = await fetchImages(card.imagesRefs);
+        setImg(images);
+        setLoading(false);
+      };
 
-    if (card.imagesRefs.length) {
-      fetchImg();
-    }
-  }, []);
+      if (card.imagesRefs.length) {
+        fetchImg();
+      }
+    }, [500]);
+  }, [card.imagesRefs]);
 
   const handleViewButton = ({ cardId }) => {
-    navigate(`/project/:${cardId}`);
+    navigate(`/project/${cardId}`);
   };
 
   return (
     <Card
       loading={loading}
-      style={{
-        width: 400,
-        height: 740,
-      }}
       className={styles.card}
       bordered={true}
-      hoverable
       cover={
-        <Carousel dotPosition="bottom" style={{ height: "600px" }}>
-          <div className={styles.cardImageWrapper}>
-            {img.map((image) => (
-              <LazyLoadImage
-                key={image}
-                draggable={false}
-                className={styles.cardImage}
-                alt={card.title}
-                src={image}
-              />
-            ))}
-          </div>
+        <Carousel dotPosition="bottom" autoplay autoplaySpeed={4000}>
+          {img.map((image, index) => (
+            <LazyLoadImage
+              effect="blur"
+              key={index}
+              draggable={false}
+              wrapperClassName={styles.cardImage}
+              alt={card.title}
+              src={image}
+            />
+          ))}
         </Carousel>
       }
       actions={[
@@ -66,7 +61,7 @@ const PortfolioCard = ({ card }) => {
     >
       <Meta
         title={card.title}
-        description={<div>Updated at: {card.updatedAt}</div>}
+        description={<div>Updated at: {date.toLocaleString()}</div>}
       />
     </Card>
   );

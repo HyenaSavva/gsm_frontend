@@ -1,12 +1,12 @@
-import folder from "../../static/folder.png";
-import chat from "../../static/chat.png";
-import support from "../../static/support.png";
-import styles from "./Contact.module.css";
-
 import { useState } from "react";
-import ModalForm from "../../components/ModalForm/ModalForm";
+import ModalForm from "components/ModalForm/ModalForm";
 import { Modal, Button, Divider } from "antd";
 import { motion } from "framer-motion";
+
+import folder from "static/folder.png";
+import chat from "static/chat.png";
+import support from "static/support.png";
+import styles from "./Contact.module.css";
 
 const Contact = () => {
   const [modal, setModal] = useState(false);
@@ -45,10 +45,10 @@ const Contact = () => {
           <img src={folder} alt="folder" />
           <span className={styles.title}>Descrieti case-ul</span>
           <div className={styles.subtitle}>
-            Concretizati ce sa intamplat si cum ati dat de aceasta problema
+            Concretizati ce s-a intamplat si cum ati dat de aceasta problema
           </div>
           <div className={styles.description}>
-            Expilicati situatia dumneavoastra, ce si cum sa intamplat si ce a
+            Expilicati situatia dumneavoastra, ce si cum s-a intamplat si ce a
             rezultat din eroare.
           </div>
           <div className={styles.buttonContainer}>

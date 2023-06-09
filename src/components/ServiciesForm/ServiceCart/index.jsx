@@ -1,5 +1,4 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { useMemo } from "react";
 import { Droppable } from "react-beautiful-dnd";
 import CustomCard from "../../CustomCard/CustomCard";
 

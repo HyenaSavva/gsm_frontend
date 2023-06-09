@@ -20,7 +20,7 @@ const ServiciesContent = ({ cardsSearch, itemsData, setCardsSearch }) => {
           <CustomCard card={card} key={card.itemId} index={index} />
         ))
         .slice(firstIndexPage, lastIndexPage),
-    [cardsSearch, itemsPerPage, currentPage]
+    [cardsSearch, firstIndexPage, lastIndexPage]
   );
 
   return (

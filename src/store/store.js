@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: {},
@@ -11,11 +11,11 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    removeUser: (state) => {
+      state.user = null;
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
-
-export default configureStore({
-  reducer: userSlice.reducer,
-});
+export const { setUser, removeUser } = userSlice.actions;
+export default userSlice.reducer;
