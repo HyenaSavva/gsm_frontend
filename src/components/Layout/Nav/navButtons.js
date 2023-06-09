@@ -1,4 +1,4 @@
-import NavProfile from "./NavProfile/NavProfile";
+import NavProfile from "components/Layout/Nav/NavProfile";
 
 import styles from "./Nav.module.css";
 

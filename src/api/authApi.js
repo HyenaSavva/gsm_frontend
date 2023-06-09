@@ -5,7 +5,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { auth } from "../../../db";
+import { auth } from "db";
 
 export const signInWithGoogle = async () => {
   try {

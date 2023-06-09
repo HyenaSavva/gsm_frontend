@@ -1,0 +1,15 @@
+.profilePageContainer {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.profilePage {
+  background-color: aliceblue;
+  width: 932px;
+  height: 800px;
+}

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import Background from "./Background/Background";
+import Background from "./Background";
 
 const HomePage = ({ children }) => {
   return (

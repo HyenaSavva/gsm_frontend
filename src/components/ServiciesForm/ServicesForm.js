@@ -1,28 +1,26 @@
 import { useMemo, useState, useContext } from "react";
 import {
-  yupValidator,
-  renderInputs,
-  fields,
-} from "./ServiceInputs/ServiceInputs";
-import {
   securityTypes,
   buildingTypes,
   textTooltips,
-} from "./ServiceInputs/utils";
-import { postProject } from "../../api/api";
-import { motion } from "framer-motion";
+  SUCCESS,
+  WARNING,
+} from "utils/constants";
+import { postProject } from "api";
 import { Button, Form, Select, Collapse, Input, notification } from "antd";
-import { AuthContext } from "../AuthForm/authFunctions/AuthContextProvider";
-import ServiceCart from "./ServiceCart/ServiceCart";
+import { AuthContext } from "auth/AuthContextProvider";
+import { yupValidator, renderInputs, fields } from "./ServiceInputs";
+import ServiceCart from "./ServiceCart";
 
 import styles from "./ServiceForm.module.css";
 
 const ServiciesForm = ({ itemsData, cartItems }) => {
   const [loading, setLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
-  const [form] = Form.useForm();
-  const { authState } = useContext(AuthContext);
+
   const [api, contextHolder] = notification.useNotification();
+  const { authState } = useContext(AuthContext);
+  const [form] = Form.useForm();
 
   const { Panel } = Collapse;
 
@@ -35,21 +33,8 @@ const ServiciesForm = ({ itemsData, cartItems }) => {
 
     setTimeout(() => {
       setLoading(false);
-      result.status === 200
-        ? api.success({
-            message: "Success",
-            description: "yes",
-            duration: 3,
-            placement: "bottomLeft",
-          })
-        : api.warning({
-            message: "Something goes wrong",
-            duration: 3,
-            placement: "bottomLeft",
-          });
+      result.status === 200 ? api.success(SUCCESS) : api.warning(WARNING);
     }, 1500);
-
-    console.log(result);
   };
 
   const handleChange = (value) => {
@@ -61,20 +46,24 @@ const ServiciesForm = ({ itemsData, cartItems }) => {
       <>
         <Form.Item
           name="securityType"
-          label="Tipul de securitate"
+          label=" "
           rules={[yupValidator, { required: true, message: "" }]}
           tooltip={textTooltips.securityType}
         >
-          <Select options={securityTypes} />
+          <Select placeholder="Tipul de securitate" options={securityTypes} />
         </Form.Item>
 
         <Form.Item
           name="buildingType"
-          label="Tipul cladirii"
+          label=" "
           rules={[yupValidator, { required: true, message: "" }]}
           tooltip={textTooltips.buildingType}
         >
-          <Select options={buildingTypes} onChange={handleChange} />
+          <Select
+            placeholder="Tipul cladirii"
+            options={buildingTypes}
+            onChange={handleChange}
+          />
         </Form.Item>
 
         <Form.Item
@@ -100,14 +89,20 @@ const ServiciesForm = ({ itemsData, cartItems }) => {
         </Collapse>
       </>
     ),
-    [selectedOption, cartItems]
+    [selectedOption, cartItems, form]
   );
 
   return (
-    <Form form={form} name="form" onFinish={onFinish} autoComplete="off">
+    <Form
+      form={form}
+      name="form"
+      onFinish={onFinish}
+      autoComplete="off"
+      className={styles.mainForm}
+    >
       <div className={styles.formItems}>
         <div className={styles.itemsWrapper}>{formItems}</div>
-        <motion.div className={styles.options} animate>
+        <div className={styles.options}>
           <Form.Item>
             <Button type="primary" htmlType="submit" loading={loading}>
               Submit
@@ -118,15 +113,14 @@ const ServiciesForm = ({ itemsData, cartItems }) => {
             <Button
               type="default"
               danger
-              onClick={(e) => {
-                console.log("reset");
+              onClick={() => {
                 form.resetFields(fields);
               }}
             >
               Reset Fields
             </Button>
           </Form.Item>
-        </motion.div>
+        </div>
       </div>
       {contextHolder}
     </Form>

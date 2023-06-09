@@ -1,12 +1,21 @@
-import { Route, Routes } from "react-router-dom";
-import Layout from "./components/Layout/Layout";
-import AuthPage from "./pages/AuthPage/AuthPage";
-import AnimatedRoutes from "./AnimatedRoutes";
-import Main from "./components/Layout/Main/Main";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
+import Layout from "components/Layout/Layout";
+import AuthPage from "pages/AuthPage/AuthPage";
+import Main from "components/Layout/Main/Main";
+import Servicies from "pages/ServiciesPage/Servicies";
+import HomePage from "pages/HomePage/HomePage";
+import Contact from "pages/ContactPage/Contact";
+import Portofolio from "pages/PortofolioPage/Portofolio";
+import PortofolioDetail from "pages/PortofolioDetailPage/PortofolioDetail";
+import ProfilePage from "pages/ProfilePage";
 
 import "./styles/App.css";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App">
       <Routes>
@@ -15,7 +24,19 @@ function App() {
           element={
             <Layout>
               <Main>
-                <AnimatedRoutes />
+                <AnimatePresence mode="wait">
+                  <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/servicies" element={<Servicies />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/portfolio" element={<Portofolio />} />
+                    <Route
+                      path="/project/:projectId"
+                      element={<PortofolioDetail />}
+                    />
+                    <Route path="/profile" element={<ProfilePage />} />
+                  </Routes>
+                </AnimatePresence>
               </Main>
             </Layout>
           }

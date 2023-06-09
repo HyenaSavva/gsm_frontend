@@ -1,14 +1,16 @@
-import { logout } from "../../../AuthForm/authFunctions/authFunctions";
+import { logout } from "api";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../AuthForm/authFunctions/AuthContextProvider";
-
+import { useEffect, useState, memo } from "react";
+import { useSelector } from "react-redux";
 import { Avatar, Dropdown } from "antd";
 import { LogoutOutlined, SettingOutlined } from "@ant-design/icons";
+
 import styles from "./NavProfile.module.css";
 
-const NavProfile = () => {
-  const { authState } = useContext(AuthContext);
+const NavProfile = memo(() => {
+  const red = useSelector((state) => state.user);
+  const authState = red.user;
+
   const [user, setUser] = useState(false);
   const [imageSRC, setImageSRC] = useState(false);
 
@@ -46,9 +48,7 @@ const NavProfile = () => {
                   </div>
                 </div>
               ),
-              onClick: (item) => {
-                handleNavigation(item.key);
-              },
+              onClick: (item) => handleNavigation(item.key),
             },
             { type: "divider" },
             {
@@ -58,9 +58,7 @@ const NavProfile = () => {
                   <SettingOutlined /> Settings
                 </div>
               ),
-              onClick: (item) => {
-                handleNavigation(item.key);
-              },
+              onClick: (item) => handleNavigation(item.key),
             },
             { type: "divider" },
             {
@@ -84,6 +82,6 @@ const NavProfile = () => {
       </Dropdown>
     </div>
   );
-};
+});
 
 export default NavProfile;

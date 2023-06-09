@@ -1,29 +1,34 @@
 import CustomCard from "../../../components/CustomCard/CustomCard";
 import ServiceSearch from "../../../components/ServiceSearch/ServiceSearch";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Droppable } from "react-beautiful-dnd";
+import { Pagination } from "antd";
 
 import styles from "./ServiciesContent.module.css";
 
 const ServiciesContent = ({ cardsSearch, itemsData, setCardsSearch }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(30);
+
+  const lastIndexPage = currentPage * itemsPerPage;
+  const firstIndexPage = lastIndexPage - itemsPerPage;
+
   const cardsList = useMemo(
     () =>
       cardsSearch
         .map((card, index) => (
           <CustomCard card={card} key={card.itemId} index={index} />
         ))
-        .slice(0, 60),
-    [cardsSearch]
+        .slice(firstIndexPage, lastIndexPage),
+    [cardsSearch, firstIndexPage, lastIndexPage]
   );
 
   return (
     <div className={styles.cardsContainer}>
-      <ServiceSearch
-        itemsData={itemsData}
-        setCardsSearch={setCardsSearch}
-        cardsSearch={cardsSearch}
-      />
-      
+      <div className={styles.searchContainer}>
+        <ServiceSearch itemsData={itemsData} setCardsSearch={setCardsSearch} />
+      </div>
+
       <div className={styles.cardsWrapper}>
         <Droppable droppableId="searchDroppable" direction="grid">
           {(provided) => {
@@ -39,6 +44,15 @@ const ServiciesContent = ({ cardsSearch, itemsData, setCardsSearch }) => {
             );
           }}
         </Droppable>
+      </div>
+      <div className={styles.pagination}>
+        <Pagination
+          total={itemsData.length}
+          pageSize={itemsPerPage}
+          pageSizeOptions={[30, 60, 90, 120]}
+          onChange={(page, pageSize) => setCurrentPage(page)}
+          onShowSizeChange={(current, size) => setItemsPerPage(size)}
+        />
       </div>
     </div>
   );

@@ -1,7 +1,20 @@
-import { useMemo } from "react";
-import { Input } from "antd";
+import { useState } from "react";
+import { Input, AutoComplete, Checkbox } from "antd";
+import { checkBoxOptions } from "utils/constants";
 
-const ServiceSearch = ({ itemsData, setCardsSearch, onChange }) => {
+const ServiceSearch = ({ itemsData, setCardsSearch }) => {
+  const cardsList = itemsData.map((item) => {
+    return {
+      ...item,
+      key: item.itemId,
+      label: item.title + " " + item.price + " lei",
+      value: item.title,
+    };
+  });
+
+  const [autoCompleteCards, setAutoCompleteCards] = useState(cardsList);
+  const { Search } = Input;
+
   const handleSearch = (value) => {
     const filteredCardsList = itemsData.filter((item) =>
       item.title.toLowerCase().includes(value.toLowerCase())
@@ -15,35 +28,48 @@ const ServiceSearch = ({ itemsData, setCardsSearch, onChange }) => {
     }
   };
 
-  const handleFocus = (value) => {
-    setCardsSearch(itemsData);
+  const handleComplete = (value) => {
+    const filteredCardsList = cardsList.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setAutoCompleteCards(filteredCardsList);
   };
 
-  const cardsSearchList = useMemo(
-    () =>
-      itemsData.map((item) => {
-        return {
-          ...item,
-          label: item.title + " " + item.price + " lei",
-          value: item.itemId,
-        };
-      }),
-    [itemsData]
-  );
+  const handleCheck = (filters) => {
+    let results = cardsList;
+
+    filters.forEach((filter) => {
+      results = results.filter((item) => {
+        return item.label.toLowerCase().includes(filter.toLowerCase());
+      });
+    });
+
+    setCardsSearch(results);
+  };
 
   return (
-    <Input
-      mode="multiple"
-      optionFilterProp="label"
-      listHeight={160}
-      placeholder="Please select"
-      style={{ width: "100%" }}
-      maxTagTextLength={10}
-      onSearch={handleSearch}
-      onChange={onChange}
-      onFocus={handleFocus}
-      options={cardsSearchList}
-    />
+    <>
+      <AutoComplete
+        style={{ width: "100%" }}
+        options={autoCompleteCards}
+        onChange={handleComplete}
+      >
+        <Search
+          allowClear={true}
+          onSearch={handleSearch}
+          placeholder="Introduce your product"
+          loading={false}
+        />
+      </AutoComplete>
+      <Checkbox.Group
+        style={{
+          width: "100%",
+        }}
+        onChange={handleCheck}
+        options={checkBoxOptions}
+      />
+    </>
   );
 };
 

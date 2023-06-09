@@ -1,3 +1,7 @@
+.mainForm {
+  width: 88%;
+}
+
 .formItems {
   overflow: auto;
 }

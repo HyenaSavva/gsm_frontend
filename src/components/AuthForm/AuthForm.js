@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { yupValidator } from "./authFunctions/utils";
-import { signIn, login, signInWithGoogle } from "./authFunctions/authFunctions";
-
+import { yupValidator } from "auth/utils";
+import { signIn, login, signInWithGoogle } from "api";
 import { LockOutlined, UserOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
+
 import styles from "./AuthForm.module.css";
 
 const AuthForm = () => {
@@ -29,7 +29,7 @@ const AuthForm = () => {
   const onSubmitHandler = async ({ Email, Password, remember }) => {
     if (isLoginForm) {
       setIsLoading(true);
-      const user = await login(Email, Password);
+      await login(Email, Password);
       setIsLoading(false);
     } else {
       setIsLoading(true);
