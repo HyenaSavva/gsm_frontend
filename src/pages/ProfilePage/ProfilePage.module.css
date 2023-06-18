@@ -9,7 +9,50 @@
 }
 
 .profilePage {
-  background-color: aliceblue;
+  margin-top: 2rem;
   width: 932px;
   height: 800px;
+  border: 1px solid rgba(228, 228, 228, 0.5);
+  box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.sideProfile {
+  width: 40%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  background-color: rgba(228, 228, 228, 0.5);
+}
+
+.mainInfo {
+  width: 60%;
+  margin-top: 2rem;
+}
+
+.avatar {
+  margin-top: 4rem;
+}
+
+.additionalInfo {
+  list-style: none;
+  margin-top: 1rem;
+  color: #565656;
+}
+
+.mainInfo > section {
+  margin-top: 1.5rem;
+}
+
+section > h2 {
+  font-size: 20px;
+}
+
+section > p {
+  color: #565656;
+  white-space: nowrap;
 }
