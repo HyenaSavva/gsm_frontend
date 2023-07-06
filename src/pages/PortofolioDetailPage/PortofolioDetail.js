@@ -51,7 +51,7 @@ const PortfolioDetail = () => {
             <hr />
 
             <div className={styles.description}>
-              <h2>Descriere</h2>
+              <h2>Caracteristici</h2>
               <p>Tipul de securitate: {item.securityType}</p>
               <p>Tipul de cladire: {item.buildingType}</p>
               {item.buildingType &&
@@ -67,7 +67,8 @@ const PortfolioDetail = () => {
             </div>
             <hr />
             <div className={styles.location}>
-              <h2>Location</h2>
+              <h2>Descriere</h2>
+              <p>{item?.description}</p>
             </div>
           </>
         ) : (

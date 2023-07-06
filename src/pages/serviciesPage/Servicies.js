@@ -33,6 +33,7 @@ const Servicies = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ delay: 0.2 }}
     >
       <DragDropContext
         onDragEnd={(e) =>
@@ -44,7 +45,7 @@ const Servicies = () => {
         </div>
         <ServiciesContent
           setCardsSearch={setCardsSearch}
-          itemsData={itemsData}
+          itemsData={cards}
           cardsSearch={cardsSearch}
         />
       </DragDropContext>

@@ -6,7 +6,7 @@ const padding = { padding: "0 16px", borderRadius: 0 };
 export const menuItems = [
   {
     key: "/",
-    label: <div className={styles.logo}>G&M Surveillance</div>,
+    label: <div className={styles.logo}>WatchGuard</div>,
   },
   {
     key: "nav",
@@ -15,7 +15,7 @@ export const menuItems = [
     children: [
       {
         key: "/servicies",
-        label: "Servicies",
+        label: "Servicii",
         style: padding,
       },
       {
@@ -25,7 +25,7 @@ export const menuItems = [
       },
       {
         key: "/portfolio",
-        label: "Portfolio",
+        label: "Proiecte",
         style: padding,
       },
     ],
