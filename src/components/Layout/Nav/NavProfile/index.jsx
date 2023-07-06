@@ -65,7 +65,15 @@ const NavProfile = memo(() => {
               key: "/auth",
               label: (
                 <>
-                  <LogoutOutlined /> Log Out
+                  {!user ? (
+                    <>
+                      <LogoutOutlined /> Log In
+                    </>
+                  ) : (
+                    <>
+                      <LogoutOutlined /> Log Out
+                    </>
+                  )}
                 </>
               ),
               onClick: async (item) => {

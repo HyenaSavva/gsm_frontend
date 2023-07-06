@@ -12,6 +12,7 @@ import PortofolioDetail from "pages/PortofolioDetailPage/PortofolioDetail";
 import ProfilePage from "pages/ProfilePage";
 
 import "./styles/App.css";
+import ServiciesInfo from "components/ServiciesInfo";
 
 function App() {
   const location = useLocation();
@@ -27,7 +28,16 @@ function App() {
                 <AnimatePresence mode="wait">
                   <Routes location={location} key={location.pathname}>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/servicies" element={<Servicies />} />
+                    <Route
+                      path="/servicies"
+                      element={
+                        <>
+                          <ServiciesInfo>
+                            <Servicies />
+                          </ServiciesInfo>
+                        </>
+                      }
+                    />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/portfolio" element={<Portofolio />} />
                     <Route

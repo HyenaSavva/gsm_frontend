@@ -12,7 +12,7 @@ const Background = () => {
       />
       <div className={styles.hero}>
         <section>
-          <span>Solutii pentru</span>
+          <span>Soluții pentru</span>
           <span className={styles.arrow} />
           <div className={styles.carousel}>
             <Carousel
@@ -22,15 +22,15 @@ const Background = () => {
               dotPosition="left"
             >
               <span>Sisteme de securizare</span>
-              <span>Sisteme antifractie</span>
-              <span>Automatizari porti</span>
-              <span>Interfoane si video-interfoane</span>
-              <span>Retele curenti slabi</span>
-              <span>Retele fibra optica</span>
+              <span>Sisteme antifracție</span>
+              <span>Automatizări porți</span>
+              <span>Interfoane și video-interfoane</span>
+              <span>Rețele curenți slabi</span>
+              <span>Rețele fibră optică</span>
             </Carousel>
           </div>
         </section>
-        <p>Instalarea si mentenanta sistemelor </p>
+        <p>Instalarea și mentenanța sistemelor</p>
       </div>
     </div>
   );
